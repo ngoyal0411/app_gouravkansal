@@ -7,20 +7,20 @@ metadata:
 spec:
   replicas: 3
   selector:
-    - matchlabels:
-        app: dotnet-web-app
+    matchlabels:
+    app: dotnet-web-app
   template:
     metadata:
       labels:
-        app: dotnet_web-app
+        app: dotnet-web-app
     spec:
       containers:
-        name: dotnet-web-app
-        image: 3153712/gouravkansal_webapp:latest
-        ports:
-          - name: http
-            containerPort: 80
-            protocol: TCP
+        - name: dotnet-web-app
+          image: 3153712/gouravkansal_webapp:latest
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
 
 ---
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
   selector:
     app: dotnet-web-app
   ports:
-    protocol: TCP
-    nodePort: 30158
-    port: 80
-    targetPort: 80
+    - protocol: TCP
+      nodePort: 30158
+      port: 80
+      targetPort: 80
