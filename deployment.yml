@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
   name: dotnet-web-app-deployment
   labels:
@@ -24,7 +24,7 @@ spec:
 
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata:
   name: dotnet-web-app
 spec:
