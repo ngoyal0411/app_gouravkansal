@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         name: dotnet-web-app
-        image:
+        image: 3153712/gouravkansal_webapp
         ports:
           - name: http
             containerPort: 80
