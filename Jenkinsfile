@@ -70,17 +70,17 @@ pipeline{
          steps{
              script {
                     if (env.BRANCH_NAME == 'develop') {
-                        echo "remove container if running already"
+                        echo "remove container if running"
                         bat "docker rm --force /WebApp"
                     }
 
-                    if (! bat "docker ps -q -f name=c-gouravkansal-master" ){ 
-                        echo "inside outer if"
-                        if ( bat "docker ps -aq -f status=exited -f name=c-gouravkansal-master"){ 
-                            echo "removing container..."
-                            bat "docker rm --force c-gouravkansal-master"
-                        }
-                    }
+                    if [ ! "$(docker ps -q -f name=c-gouravkansal-master)" ]; then
+                        echo "inside outer if..........."
+                        if [ "$(docker ps -aq -f status=exited -f name=c-gouravkansal-master)" ]; then
+                            echo "removing container c-gouravkansal-master........."
+                            docker rm c-gouravkansal-master
+                        fi
+                    fi
                 }
          }
      }
