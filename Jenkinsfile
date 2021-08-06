@@ -70,7 +70,7 @@ pipeline{
          steps{
              script {
                     if (env.BRANCH_NAME == 'develop') {
-                        echo "remove container if running"
+                        echo "remove container if running already"
                         bat "docker rm --force /WebApp"
                     }
 
