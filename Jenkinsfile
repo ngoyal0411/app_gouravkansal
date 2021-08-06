@@ -83,8 +83,8 @@ pipeline{
              bat "docker tag i-gouravkansal-master:${BUILD_NUMBER} i-gouravkansal-master:${BUILD_NUMBER}"
              bat "docker tag i-gouravkansal-master:${BUILD_NUMBER} i-gouravkansal-master:latest"
              withDockerRegistry([credentialsId: 'DockerHub', url: ""]){
-                 bat "docker push i-gouravkansal-master:${BUILD_NUMBER}"
-                 bat "docker push i-gouravkansal-master:latest"
+                 bat "docker push ${registry}:i-gouravkansal-master:${BUILD_NUMBER}"
+                 bat "docker push ${registry}:i-gouravkansal-master:latest"
                 }
             }
          }
