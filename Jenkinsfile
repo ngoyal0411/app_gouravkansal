@@ -80,6 +80,7 @@ pipeline{
      stage('Push Image to Docker Hub'){
          steps{
              echo 'Push image to docker hub'
+             bat "docker tag i-gouravkansal-master:${BUILD_NUMBER} i-gouravkansal-master:${BUILD_NUMBER}"
              bat "docker tag i-gouravkansal-master:${BUILD_NUMBER} i-gouravkansal-master:latest"
              withDockerRegistry([credentialsId: 'DockerHub', url: ""]){
                  bat "docker push i-gouravkansal-master:${BUILD_NUMBER}"
