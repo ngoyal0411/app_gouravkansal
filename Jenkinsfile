@@ -5,7 +5,7 @@ pipeline{
         scannerHome = tool name: 'sonar_scanner_dotnet'
         registry = '3153712/gouravkansal_webapp'
         properties = null
-        docker_port = '7100'
+        docker_port = '7200'
         username = 'gouravkansal'
         project_id = 'nagp-assignment-321709'
         cluster_name = 'dotnet-web-app'
@@ -60,7 +60,7 @@ pipeline{
          steps{
              echo "Build docker image"
              bat 'dotnet publish -c Release'
-             bat "docker build -t i_${username}_master --no-cache -f Dockerfile ."
+             bat "docker build -t i-gouravkansal-master:${BUILD_NUMBER} --no-cache -f Dockerfile ."
          }
      }
      
@@ -80,23 +80,21 @@ pipeline{
      stage('Push Image to Docker Hub'){
          steps{
              echo 'Push image to docker hub'
-             bat "docker tag i_${username}_master ${registry}:${BUILD_NUMBER}"
-             bat "docker tag i_${username}_master ${registry}:latest"
+             bat "docker tag i-gouravkansal-master:${BUILD_NUMBER} i-gouravkansal-master:latest"
              withDockerRegistry([credentialsId: 'DockerHub', url: ""]){
-                 bat "docker push ${registry}:${BUILD_NUMBER}"
-                 bat "docker push ${registry}:latest"
-             }
+                 bat "docker push i-gouravkansal-master:${BUILD_NUMBER}"
+                 bat "docker push i-gouravkansal-master:latest"
+                }
+            }
          }
-     }
-     
-         }
-     }
-     
+      }
+    }
+
     
     stage('Docker Deployment'){
         steps{
             echo 'Deploy to docker'
-            bat "docker run --name WebApp -d -p ${docker_port}:80 ${registry}:${BUILD_NUMBER}"
+            bat "docker run --name c-gouravkansal-master -d -p ${docker_port}:80 i-gouravkansal-master:${BUILD_NUMBER}"
         }
     }
     
