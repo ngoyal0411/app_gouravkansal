@@ -4,19 +4,19 @@ metadata:
   name: dotnet-web-app-deployment
   namespace: kubernetes-cluster-gouravkansal
   labels:
-    app: dotnet-web-app
+    app: dotnet-web-app-develop
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: dotnet-web-app
+      app: dotnet-web-app-develop
   template:
     metadata:
       labels:
-        app: dotnet-web-app
+        app: dotnet-web-app-develop
     spec:
       containers:
-        - name: dotnet-web-app
+        - name: dotnet-web-app-develop
           image: 3153712/gouravkansal_webapp:latest
           ports:
             - name: http
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnet-web-app
+  name: dotnet-web-app-develop
   namespace: kubernetes-cluster-gouravkansal
 spec:
   type: NodePort
   selector:
-    app: dotnet-web-app
+    app: dotnet-web-app-develop
   ports:
     - protocol: TCP
       nodePort: 30158

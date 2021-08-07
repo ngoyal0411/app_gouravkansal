@@ -8,7 +8,7 @@ pipeline{
         docker_port = '7300'
         username = 'gouravkansal'
         project_id = 'nagp-assignment-321709'
-        cluster_name = 'dotnet-web-app-develop'
+        cluster_name = 'dotnet-web-app'
         location = 'us-central1-c'
         credentials_id = 'KubernetesCredentials'
         }
