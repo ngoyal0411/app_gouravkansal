@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnet-web-app-deployment
+  namespace: kubernetes-cluster-gouravkansal
   labels:
     app: dotnet-web-app
 spec:
@@ -27,6 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dotnet-web-app
+  namespace: kubernetes-cluster-gouravkansal
 spec:
   type: NodePort
   selector:
