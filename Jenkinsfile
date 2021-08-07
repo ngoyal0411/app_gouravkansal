@@ -101,6 +101,7 @@ pipeline{
     
     stage('Kubernetes Deployment'){
         steps{
+            echo 'deploying to kubernetes'
             bat "kubectl apply -f deployment.yaml"
         }
     }
