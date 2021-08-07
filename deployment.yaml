@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnet-web-app-develop
+  name: dotnet-web-app
   namespace: kubernetes-cluster-gouravkansal
 spec:
   type: NodePort
