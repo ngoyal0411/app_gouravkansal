@@ -73,14 +73,6 @@ pipeline{
                         echo "remove container if running"
                         bat "docker rm --force /WebApp"
                     }
-
-                    if [ ! "$(docker ps -q -f name=c-gouravkansal-master)" ]; then
-                        echo "inside outer if..........."
-                        if [ "$(docker ps -aq -f status=exited -f name=c-gouravkansal-master)" ]; then
-                            echo "removing container c-gouravkansal-master........."
-                            docker rm c-gouravkansal-master
-                        fi
-                    fi
                 }
          }
      }
