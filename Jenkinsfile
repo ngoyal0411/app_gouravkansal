@@ -8,7 +8,7 @@ pipeline{
         docker_port = '7300'
         username = 'gouravkansal'
         project_id = 'nagp-assignment-321709'
-        cluster_name = 'dotnet-web-app'
+        cluster_name = 'dotnet-web-app-develop'
         location = 'us-central1-c'
         credentials_id = 'KubernetesCredentials'
         }
@@ -91,7 +91,7 @@ pipeline{
     
     stage('Kubernetes Deployment'){
         steps{
-            step([$class: 'KubernetesEngineBuilder', projectId: env.project_id, clusterName: env.cluster_name, location: env.location, manifestPattern: 'deployment.yml', credentialsId: env.credentials_id, verifyDeployments: true]);
+            step([$class: 'KubernetesEngineBuilder', projectId: env.project_id, clusterName: env.cluster_name, location: env.location, manifestPattern: 'deployment.yaml', credentialsId: env.credentials_id, verifyDeployments: true]);
         }
     }
     
