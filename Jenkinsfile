@@ -102,7 +102,7 @@ pipeline{
     stage('Kubernetes Deployment'){
         steps{
             echo 'Deploy to kubernetes'
-            bat "kubectl apply -f deployment.yaml"
+            bat "kubectl apply -f deployment.yml"
         }
     }
     
