@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet-web-app-deployment
+  name: dotnet-web-app-develop-deployment
   namespace: kubernetes-cluster-gouravkansal
   labels:
     app: dotnet-web-app-develop
