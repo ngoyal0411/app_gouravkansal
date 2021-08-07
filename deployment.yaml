@@ -30,7 +30,7 @@ metadata:
   name: dotnet-web-app
   namespace: kubernetes-cluster-gouravkansal
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: dotnet-web-app
   ports:
