@@ -41,7 +41,7 @@ pipeline{
 
     stage('Release artifacts'){
     steps{
-        echo 'Release artifacts'
+        bat 'dotnet publish -c Release'
         }
         }
     
@@ -49,7 +49,6 @@ pipeline{
      stage('Docker Image'){
          steps{
              echo "Build docker image"
-             bat 'dotnet publish -c Release'
              bat "docker build -t i-gouravkansal-develop:${BUILD_NUMBER} --no-cache -f Dockerfile ."
          }
      }
