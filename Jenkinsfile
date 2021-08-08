@@ -60,7 +60,7 @@ pipeline{
          steps{
              script{
              if (env.container_exist != null) {
-                        bat "docker rm c-gouravkansal-develop"
+                        bat "docker rm --force c-gouravkansal-develop"
                     }
              }
          }
