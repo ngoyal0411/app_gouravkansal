@@ -11,6 +11,7 @@ pipeline{
         cluster_name = 'dotnet-web-app'
         location = 'us-central1-c'
         credentials_id = 'KubernetesCredentials'
+        container_exist = "${bat(script:'docker ps -q -f name=c-gouravkansal-master', returnStdout: true).trim().readLines().drop(1).join("")}"
         }
     
     stages{
@@ -68,11 +69,9 @@ pipeline{
              stage('Precontainer Check'){
          steps{
              script {
-                   if ( "bat docker ps -q -f name=c-gouravkansal-master" ) {
-                    if ( "bat docker ps -aq -f status=exited -f name=c-gouravkansal-master" ) {
-                      bat "docker rm --force /c-gouravkansal-master"
-              }
-              }
+                  if (env.container_exist != null) {
+                        bat "docker stop c-gouravkansal-master && docker rm c-gouravkansal-master"
+                    }
                 }
          }
      }
