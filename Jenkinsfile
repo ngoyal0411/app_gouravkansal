@@ -69,10 +69,11 @@ pipeline{
              stage('Precontainer Check'){
          steps{
              script {
-                    if (env.BRANCH_NAME == 'develop') {
-                        echo "remove container if running"
-                        bat "docker rm --force /WebApp"
-                    }
+                   if ( "bat docker ps -q -f name=c-gouravkansal-master" ) {
+                    if ( "bat docker ps -aq -f status=exited -f name=c-gouravkansal-master" ) {
+                      bat "docker rm --force /c-gouravkansal-master"
+              }
+              }
                 }
          }
      }
