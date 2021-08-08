@@ -7,10 +7,6 @@ pipeline{
         properties = null
         docker_port = '7300'
         username = 'gouravkansal'
-        project_id = 'nagp-assignment-321709'
-        cluster_name = 'dotnet-web-app'
-        location = 'us-central1-c'
-        credentials_id = 'KubernetesCredentials'
         container_exist = "${bat(script:'docker ps -q -f name=c-gouravkansal-develop', returnStdout: true).trim().readLines().drop(1).join("")}"
         }
     
@@ -90,7 +86,7 @@ pipeline{
     
     stage('Kubernetes Deployment'){
         steps{
-            step([$class: 'KubernetesEngineBuilder', projectId: env.project_id, clusterName: env.cluster_name, location: env.location, manifestPattern: 'deployment.yaml', credentialsId: env.credentials_id, verifyDeployments: true]);
+         bat "kubectl apply -f deployment.yaml"   
         }
     }
     
