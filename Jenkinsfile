@@ -58,7 +58,7 @@ pipeline{
              stage('Precontainer Check'){
          steps{
              script {
-                   if (! "bat docker ps -q -f name=c-gouravkansal-develop" ) {
+                   if ( "bat docker ps -q -f name=c-gouravkansal-develop" ) {
                     if ( "bat docker ps -aq -f status=exited -f name=c-gouravkansal-develop" ) {
                       bat "docker rm --force /c-gouravkansal-develop"
               }
