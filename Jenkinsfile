@@ -44,7 +44,8 @@ pipeline{
    }
     }
     
-    stage('Stop SonarQube Analysis'){
+    /*
+	stage('Stop SonarQube Analysis'){
          steps{
              echo "SonarQube analysis stopped"
              withSonarQubeEnv("Test_Sonar"){
@@ -52,6 +53,7 @@ pipeline{
              }
          }
      }
+	 */
      
      stage('Docker Image'){
          steps{
